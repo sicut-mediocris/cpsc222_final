@@ -67,7 +67,7 @@ while running:
     
     playerX += playerX_change
     playerY += playerY_change
-    print(str(playerX) + ", " + str(playerY))
+    #print(str(playerX) + ", " + str(playerY))
 
 
     #frame_index = (frame_index+1 ) % len(idle_frames)
