@@ -93,11 +93,11 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerX_change = 10
             if event.key == pygame.K_SPACE:
-                arrowx = playerX+20
-                arrowy = playerY-10
-                #temp = playerY
             
-                fire_arrow(playerX,arrowy)
+                arrowx = playerX+100
+                arrowy = playerY+100
+                arrow_state = "fire"
+                    
                
             if event.key == pygame.K_UP:
                 playerY_change = -10
