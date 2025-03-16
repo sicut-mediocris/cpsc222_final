@@ -194,7 +194,7 @@ while running:
         hit_effect_active = True
         hit_effect_index = 0
         hit_effect_timer = 0
-        pygame.time.set_timer(IMPACT_SOUND_EVENT, 160)
+        pygame.time.set_timer(IMPACT_SOUND_EVENT, 360)
    
     
     
