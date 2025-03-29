@@ -12,7 +12,7 @@ class TestEnemy:
         self.y = 100
         self.colour = (255, 0, 0)
         self.player = player
-        self.speed = (1,1)
+        self.speed = 10
         self.screen = screen
         self.draw(self.screen)
         self.x = threading.Thread(target = self.move, daemon=True)
@@ -44,7 +44,7 @@ class TestEnemy:
             if (v[0] != 0 or v[1] != 0):
                 v.normalize_ip()
             #print(v)
-            self.rect.move_ip(v + self.speed)
+            self.rect.move_ip(v * self.speed)
             #self.draw(self.screen)
             
             time.sleep(0.10)

@@ -153,13 +153,13 @@ while running:
         # Key events for player movement and firing arrow
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                player.x_change = -10
+                player.x_change = -1
             if event.key == pygame.K_RIGHT:
-                player.x_change = 10
+                player.x_change = 1
             if event.key == pygame.K_UP:
-                player.y_change = -10
+                player.y_change = -1
             if event.key == pygame.K_DOWN:
-                player.y_change = 10
+                player.y_change = 1
             if event.key == pygame.K_SPACE:
                 # Set arrow starting position relative to player
                 arrowx = player.x + 100
@@ -224,7 +224,7 @@ while running:
         enemy(enemyx, enemyy)
 
     pygame.display.update()
-    clock.tick(10)
+    clock.tick(60)
 
 pygame.quit()
 
