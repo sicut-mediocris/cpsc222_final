@@ -1,7 +1,8 @@
 import pygame
 import random
 import math
-import opponent
+import testenemy
+from testenemy import TestEnemy
 
 pygame.init()
 
@@ -125,53 +126,26 @@ IMPACT_SOUND_EVENT = pygame.USEREVENT + 1
 
 
 
-class type1:
-
-    def __init__(self, player):
-        self.rect = pygame.Rect(50, 50, 50, 50)
-        self.x = 100
-        self.y = 100
-        self.colour = (255, 0, 0)
-        self.player = player
-
-    def update(self):
-        # Update position based on current movement changes
-        self.x += self.x_change
-        self.y += self.y_change
-
-        # Enforce screen boundaries
-        if self.x < 0:
-            self.x = 0
-        elif self.x > 760:
-            self.x = 760
-        if self.y < 0:
-            self.y = 0
-        elif self.y > 555:
-            self.y = 555
-
-    def draw(self, screen):
-        pygame.draw.rect(screen, self.colour, self.rect)
-
-    def move(self):
-        playerPosition = self.player.get_position()
-        v = pygame.Vector2(playerPosition[0] - self.rect.x, playerPosition[1]  - self.rect.y)
-        if (v[0] != 0 and v[1] != 0):
-            v.normalize()
-        self.rect.move_ip(v)
-
-    def get_position(self):
-        return (self.x, self.y)
+screen.fill((222, 200, 180))
+screen.blit(background, (0, 0))
     
 
-test = type1(player)
 score = 0
 running = True
 clock = pygame.time.Clock()
-
+count = 0
 while running:
     screen.fill((222, 200, 180))
     screen.blit(background, (0, 0))
 
+    player.update()
+    player.draw(screen)
+
+
+    if (count == 0):
+        test = TestEnemy(player, screen)
+        count += 1
+    test.draw(screen)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -210,8 +184,7 @@ while running:
     # print("Player position:", current_position)
 
 
-    test.draw(screen)
-    test.move()
+    
     # Arrow movement
     if arrow_state == "fire":
         fire_arrow(arrowx, arrowy)

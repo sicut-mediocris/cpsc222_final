@@ -1,16 +1,22 @@
 import pygame
 import random
 import math
-from test2 import *
+import threading
+import time
 
-class type1:
+class TestEnemy:
 
-    def __init__(self, player):
+    def __init__(self, player, screen):
         self.rect = pygame.Rect(50, 50, 50, 50)
         self.x = 100
         self.y = 100
         self.colour = (255, 0, 0)
         self.player = player
+        self.speed = (1,1)
+        self.screen = screen
+        self.draw(self.screen)
+        self.x = threading.Thread(target = self.move, daemon=True)
+        self.x.start()
 
     def update(self):
         # Update position based on current movement changes
@@ -28,13 +34,20 @@ class type1:
             self.y = 555
 
     def draw(self, screen):
+        
         pygame.draw.rect(screen, self.colour, self.rect)
 
     def move(self):
-        playerPosition = self.player.get_positon()
-        v = pygame.Vector2(playerPosition[0] - self.rect.x, playerPosition[1]  - self.rect.y)
-        v.normalize()
-        self.enemy.move_ip(v)
+        while True:
+            playerPosition = self.player.get_position()
+            v = pygame.Vector2(playerPosition[0] - self.rect.x, playerPosition[1]  - self.rect.y)
+            if (v[0] != 0 or v[1] != 0):
+                v.normalize_ip()
+            #print(v)
+            self.rect.move_ip(v + self.speed)
+            #self.draw(self.screen)
+            
+            time.sleep(0.10)
 
     def get_position(self):
         return (self.x, self.y)
