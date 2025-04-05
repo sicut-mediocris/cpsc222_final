@@ -19,13 +19,13 @@ background = pygame.image.load('background.jpeg')
 background = pygame.transform.scale(background, (800, 600))
 
 # Load the sprite sheet and scale it
-sprite_sheet = pygame.image.load('Soldier-Idle.png')
+sprite_sheet = pygame.image.load('Soldier-Idle.png').convert_alpha()
 sprite_sheet = pygame.transform.scale(sprite_sheet, (sprite_sheet.get_width() * 3, sprite_sheet.get_height() * 3))
 frame_width = 64 * 3
 frame_height = 64 * 3
 
 def extract_single_frame(sheet, frame_width, frame_height, row=0, col=0):
-    frame = sheet.subsurface((col * frame_width, row * frame_height, frame_width, frame_height))
+    frame = sheet.subsurface(((col * frame_width) + 122, (row * frame_height) + 120, 50, 50)).convert_alpha()
     return frame
 
 # Extract the first frame for the player
@@ -34,32 +34,34 @@ player_frame = extract_single_frame(sprite_sheet, frame_width, frame_height)
 # Define a Player class
 class Player:
     def __init__(self, x, y, frame):
-        self.x = x
-        self.y = y
+        
+        self.hitBox = frame.get_rect()
+        self.hitBox.topleft = (x, y)
         self.frame = frame
         self.x_change = 0
         self.y_change = 0
 
     def update(self):
         # Update position based on current movement changes
-        self.x += self.x_change
-        self.y += self.y_change
+        self.hitBox.move_ip((self.x_change, self.y_change))
 
         # Enforce screen boundaries
-        if self.x < 0:
-            self.x = 0
-        elif self.x > 760:
-            self.x = 760
-        if self.y < 0:
-            self.y = 0
-        elif self.y > 555:
-            self.y = 555
+        if self.hitBox.x < 0:
+            self.hitBox.x = 0
+        elif self.hitBox.x > 760:
+            self.hitBox.x = 760
+        if self.hitBox.y < 0:
+            self.hitBox.y = 0
+        elif self.hitBox.y > 555:
+            self.hitBox.y = 555
 
     def draw(self, screen):
-        screen.blit(self.frame, (self.x, self.y))
+        
 
+        screen.blit(self.frame, self.hitBox)
+        
     def get_position(self):
-        return (self.x, self.y)
+        return (self.hitBox.x, self.hitBox.y)
 
 # Create a player instance
 player = Player(270, 280, player_frame)
