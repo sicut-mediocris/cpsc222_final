@@ -164,8 +164,8 @@ while running:
                 player.y_change = 1
             if event.key == pygame.K_SPACE:
                 # Set arrow starting position relative to player
-                arrowx = player.x + 100
-                arrowy = player.y + 100
+                arrowx = player.hitBox.x
+                arrowy = player.hitBox.y
                 arrow_state = "fire"
                 arrow_sound.play()
         if event.type == pygame.KEYUP:
@@ -192,13 +192,13 @@ while running:
         fire_arrow(arrowx, arrowy)
         arrowy -= arrowy_change
     if arrowy <= 0:
-        arrowy = player.y  # Reset arrow to player's y position
+        arrowy = player.hitBox.y  # Reset arrow to player's y position
         arrow_state = "ready"
 
     # Check for collision between arrow and enemy
     if isCollision(enemyx, enemyy, arrowx, arrowy):
         arrow_state = "ready"
-        arrowy = player.y
+        arrowy = player.hitBox.y
         score += 1
         print("Score:", score)
         hit_effect_active = True

@@ -228,7 +228,7 @@ while running:
 
    
         
-    player(playerX,playerY)
+    #player(playerX,playerY)
 
     if hit_effect_active:
         screen.blit(hit_frames[hit_effect_index], (enemyx, enemyy))
