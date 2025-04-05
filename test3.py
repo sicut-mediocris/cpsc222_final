@@ -135,13 +135,13 @@ while running:
         # Movement and Arrow Firing
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                player.x_change = -1
+                player.x_change = -4
             if event.key == pygame.K_RIGHT:
-                player.x_change = 1
+                player.x_change = 4
             if event.key == pygame.K_UP:
-                player.y_change = -1
+                player.y_change = -4
             if event.key == pygame.K_DOWN:
-                player.y_change = 1
+                player.y_change = 4
             if event.key == pygame.K_SPACE:
                 arrowx = player.x + 100
                 arrowy = player.y + 100
