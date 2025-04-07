@@ -15,11 +15,11 @@ screen = pygame.display.set_mode((800,600))
 # pygame.display.set_icon(icon)
 
 # Adding background image
-background = pygame.image.load('background.jpeg')
+background = pygame.image.load('assets/background.jpeg')
 background = pygame.transform.scale(background, (800, 600))
 
 # Load the sprite sheet and scale it
-sprite_sheet = pygame.image.load('Soldier-Idle.png').convert_alpha()
+sprite_sheet = pygame.image.load('assets/Soldier-Idle.png').convert_alpha()
 sprite_sheet = pygame.transform.scale(sprite_sheet, (sprite_sheet.get_width() * 3, sprite_sheet.get_height() * 3))
 frame_width = 64 * 3
 frame_height = 64 * 3
@@ -68,7 +68,7 @@ player = Player(270, 280, player_frame)
 
 
 #Enemy Setup:
-enemy1 = pygame.image.load('duck_man_og.png')
+enemy1 = pygame.image.load('assets/duck_man_og.png')
 enemy1 = pygame.transform.scale(enemy1, (frame_width, frame_height))
 enemyx = random.randint(20,700)
 enemyy = 100
@@ -78,7 +78,7 @@ def enemy(x, y):
     screen.blit(enemy1, (x, y))
 
 # Arrow setup
-arrow = pygame.image.load('arrow.png')
+arrow = pygame.image.load('assets/arrow.png')
 arrow = pygame.transform.scale(arrow, (arrow.get_width() * 2, arrow.get_height() * 2))
 arrow = pygame.transform.rotate(arrow, 90)
 arrowx = 0
@@ -87,8 +87,8 @@ arrowx_change = 0
 arrowy_change = 20
 arrow_state = "ready"
 
-arrow_sound = pygame.mixer.Sound('arrow_swish.mp3')
-impact_sound = pygame.mixer.Sound('arrow_impact.mp3')
+arrow_sound = pygame.mixer.Sound('assets/arrow_swish.mp3')
+impact_sound = pygame.mixer.Sound('assets/arrow_impact.mp3')
 
 def fire_arrow(x, y):
     global arrow_state
@@ -100,7 +100,7 @@ def isCollision(enemyx, enemyy, arrowx, arrowy):
     return distance < 97
 
 # Setup for hit effect animation
-hit_sprite_sheet = pygame.image.load('duck_man_sprite.png')
+hit_sprite_sheet = pygame.image.load('assets/duck_man_sprite.png')
 hit_sprite_sheet = pygame.transform.scale(hit_sprite_sheet, (hit_sprite_sheet.get_width()*2, hit_sprite_sheet.get_height()*2))
 hit_frame_width = 200
 hit_frame_height = 200
