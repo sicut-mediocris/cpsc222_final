@@ -7,7 +7,7 @@ class TestEnemy:
         self.rect = pygame.Rect(spawnx, spawny, 50, 50)  # use spawn coords
         self.colour = (255, 0, 0)
         self.player = player
-        self.speed = 5
+        self.speed = 10
         self.screen = screen
 
         # Start enemy movement in a separate thread

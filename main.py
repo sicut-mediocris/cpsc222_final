@@ -3,7 +3,7 @@ import random
 from player import Player
 from utils import extract_single_frame, extract_hit_frames, isCollision
 from assets import load_assets
-from testenemy import TestEnemy
+from testenemy1 import TestEnemy
 #from testenemy1 import TestEnemy
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -34,15 +34,22 @@ running = True
 IMPACT_SOUND_EVENT = pygame.USEREVENT + 1
 
 test_enemy_initialized = False
-
+attackers = []
 while running:
     screen.fill((222, 200, 180))
     screen.blit(assets["background"], (0, 0))
 
     if not test_enemy_initialized:
-        test = TestEnemy(player, screen)
+        test = TestEnemy(player, screen, 100, 100)
         test_enemy_initialized = True
-    test.draw(screen)
+        attackers.append(test)
+
+    colide = player.hitBox.collideobjects(attackers, key=lambda x: x.rect)
+    if(colide != None):
+        print("here")
+        player.die()
+    
+    test.draw()
 
     player.update()
     player.draw(screen)
