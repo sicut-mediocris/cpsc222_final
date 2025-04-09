@@ -4,9 +4,12 @@ from utils import isCollision
 from assets import load_assets
 from arrowVector import Arrow
 from testenemy import TestEnemy
+from random import randint
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
+
+
 clock = pygame.time.Clock()
 
 pygame.display.set_caption("Archer Game")
@@ -36,14 +39,14 @@ keys_held = {
     "right": False
 }
 last_direction_key = None
-
+timeInterval = pygame.time.get_ticks()
 while running:
     screen.fill((222, 200, 180))
     screen.blit(assets["background"], (0, 0))
 
     # Spawn animated enemy
-    if not test_enemy_initialized:
-        test = TestEnemy(player, screen, 100, 100, assets["enemy_frames"], assets["enemy_explosions"])
+    if pygame.time.get_ticks() % 100 == 0:
+        test = TestEnemy(player, screen, randint(0, 600), randint(0, 300), assets["enemy_frames"], assets["enemy_explosions"])
         test_enemy_initialized = True
         attackers.append(test)
 
@@ -53,7 +56,8 @@ while running:
         print("Player hit!")
         player.die()
 
-    test.draw(screen)
+    for x in attackers:
+        x.draw(screen)
 
     # Player movement
     if last_direction_key == "left":
@@ -113,13 +117,16 @@ while running:
 
     # Arrow-enemy collision
     for arrow in arrows[:]:
-        if isCollision(test.rect.x, test.rect.y, arrow.x, arrow.y) and test.alive:
-            test.trigger_explosion()
+        colide = arrow.arrow.collideobjects(attackers, key=lambda x: x.rect)
+        if colide !=None:
+        
+            colide.trigger_explosion()
             arrows.remove(arrow)
+            attackers.remove(colide)
             score += 1
             print("Score:", score)
             pygame.time.set_timer(IMPACT_SOUND_EVENT, 360)
-
+    
     pygame.display.update()
     clock.tick(40)
 
