@@ -20,7 +20,7 @@ print(IP)
 #nia
 #10.5.0.2
 
-s.bind((HOST, PORT))
+s.bind((IP, PORT))
 s.listen()
 
 
