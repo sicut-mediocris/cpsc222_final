@@ -30,4 +30,4 @@ class Arrow:
         return self.x < 0 or self.x > screen_width or self.y < 0 or self.y > screen_height
 
     def get_position(self):
-        return (self.x, self.y)
+        return (self.x, self.y, self.dx, self.dy)

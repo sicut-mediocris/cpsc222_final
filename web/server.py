@@ -32,6 +32,7 @@ clock = pygame.time.Clock()
 
 
 arrows = []
+
 attackers = []
 
 direction_map = {
@@ -41,6 +42,7 @@ direction_map = {
     }
 
 player = {}
+
 
 def game(connect, playerID):
     thisPlayer = Player(270, playerID)
@@ -60,9 +62,14 @@ def game(connect, playerID):
             break
 
         changeX = '0'
+      
+        vec = (0, 0)
         if move.split(" ")[0] == 'move':
             split = move.split(" ")
             changeX = split[1]
+            if split[2] == "True":
+                arrows.append(Arrow(thisPlayer.hitBox.x, thisPlayer.hitBox.y, int(split[3]), int(split[4])))
+                
 
         colide = thisPlayer.hitBox.collidelist([a.rect for a in attackers])
         if colide != -1 and thisPlayer.alive:
@@ -78,14 +85,17 @@ def game(connect, playerID):
             thisPlayer.x_change = 0
 
         thisPlayer.update()
-        
+        arrowLoc = []
         for arrow in arrows[:]:
             arrow.update()
+
             if arrow.is_off_screen(800, 600):
                 arrows.remove(arrow)
+            else:
+                arrowLoc.append(arrow.get_position())
 
         player[playerID] = thisPlayer.getState()
-        connect.send(pickle.dumps(player))
+        connect.send(pickle.dumps((player, arrowLoc)))
     
         time.sleep(0.001)
     del player[playerID]

@@ -56,7 +56,7 @@ async def main():
 
     test_enemy_initialized = False
     
-
+    drawArrow = Arrow (assets["arrow"])
     # Movement state tracking
     keys_held = {
         "left": False,
@@ -65,15 +65,15 @@ async def main():
     last_direction_key = None
     timeInterval = pygame.time.get_ticks()
     players = {}
-
+    vec = (0, 0)
     running = True
     while running:
         screen.fill((222, 200, 180))
         screen.blit(assets["background"], (0, 0))
-
+        shoot = False
         try:
             message = s.recv(1024)
-            players = pickle.loads(message)
+            players, arrows = pickle.loads(message)
         except Exception as e:
             print(e)
             break
@@ -81,6 +81,8 @@ async def main():
         for key, x in players.items():
             Player.update(screen, x[0], x[1], x[2], x[3] )
 
+        for x in arrows:
+            drawArrow.draw(screen,x[0], x[1], x[2], x[3])
         # Check collision with player
         
 
@@ -89,11 +91,7 @@ async def main():
 
        
         # Arrow logic
-        for arrow in arrows[:]:
-            arrow.update()
-            arrow.draw(screen)
-            if arrow.is_off_screen(800, 600):
-                arrows.remove(arrow)
+        
 
         # Event handling
         for event in pygame.event.get():
@@ -109,14 +107,11 @@ async def main():
                     keys_held["right"] = True
                     last_direction_key = "right"
 
-                # if event.key in direction_map and player.alive:
-                #     dx, dy = direction_map[event.key]
-                #     px, py = player.get_position()
-                #     arrow = Arrow(px + player.width // 2, py + player.height // 2, dx, dy, assets["arrow"])
-                #     arrows.append(arrow)
-                #     #assets["arrow_sound"].play()
-                #     player.is_shooting = True
-                #     player.shoot_frame_timer = 0
+                if event.key in direction_map:
+                    vec = direction_map[event.key]
+                    shoot = True
+                    #assets["arrow_sound"].play()
+                   
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
@@ -134,18 +129,10 @@ async def main():
                 pygame.time.set_timer(IMPACT_SOUND_EVENT, 0)
 
         # Arrow-enemy collision
-        for arrow in arrows[:]:
-            colide = arrow.arrow.collideobjects(attackers, key=lambda x: x.rect)
-            if colide !=None:
-            
-                colide.trigger_explosion()
-                arrows.remove(arrow)
-                attackers.remove(colide)
-                score += 1
-                print("Score:", score)
-                #pygame.time.set_timer(IMPACT_SOUND_EVENT, 360)
-        move = 'move ' + str(last_direction_key)
-        s.send(move.encode())
+        
+        
+        move = 'move ' + str(last_direction_key) + ' ' + str(shoot) + ' ' + str(vec[0]) + ' ' + str(vec[1])
+        s.send(move.encode()) 
         
         
         pygame.display.update()
