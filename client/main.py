@@ -53,10 +53,11 @@ async def main():
     score = 0
     running = True
     IMPACT_SOUND_EVENT = pygame.USEREVENT + 1
-
+    players = {}
     test_enemy_initialized = False
     
     drawArrow = Arrow (assets["arrow"])
+    drawEnemy = TestEnemy(players, screen, randint(0, 600), randint(0, 300), assets["enemy_frames"], assets["enemy_explosions"])
     # Movement state tracking
     keys_held = {
         "left": False,
@@ -64,7 +65,7 @@ async def main():
     }
     last_direction_key = None
     timeInterval = pygame.time.get_ticks()
-    players = {}
+    
     vec = (0, 0)
     running = True
     while running:
@@ -73,7 +74,7 @@ async def main():
         shoot = False
         try:
             message = s.recv(1024)
-            players, arrows = pickle.loads(message)
+            players, arrows, attackers = pickle.loads(message)
         except Exception as e:
             print(e)
             break
@@ -87,7 +88,7 @@ async def main():
         
 
         for x in attackers:
-            x.draw(screen)
+            drawEnemy.draw(screen, x)
 
        
         # Arrow logic

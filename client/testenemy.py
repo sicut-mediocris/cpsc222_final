@@ -22,25 +22,17 @@ class TestEnemy:
         self.frame_timer = 0
         self.animation_speed = 5  # controls how fast enemy animates
 
-        self.thread = asyncio.create_task(self.move())
+        #self.thread = asyncio.create_task(self.move())
         #self.thread.start()
 
-    def draw(self, screen):
-        if self.exploding:
-            if self.explosion_index < len(self.explosion_frames):
-                frame = pygame.transform.scale(self.explosion_frames[self.explosion_index], (40, 40))
-                screen.blit(frame, self.rect)
-                self.explosion_timer += 1
-                if self.explosion_timer >= self.explosion_delay:
-                    self.explosion_timer = 0
-                    self.explosion_index += 1
-        elif self.alive:
-            frame = pygame.transform.scale(self.enemy_frames[self.frame_index], (40, 40))
-            screen.blit(frame, self.rect)
-            self.frame_timer += 1
-            if self.frame_timer >= self.animation_speed:
-                self.frame_timer = 0
-                self.frame_index = (self.frame_index + 1) % len(self.enemy_frames)
+    def draw(self, screen, position):
+        
+        frame = pygame.transform.scale(self.enemy_frames[0], (40, 40))
+        screen.blit(frame, position)
+        # self.frame_timer += 1
+        # if self.frame_timer >= self.animation_speed:
+        #     self.frame_timer = 0
+        #     self.frame_index = (self.frame_index + 1) % len(self.enemy_frames)
 
     async def move(self):
         while self.alive:

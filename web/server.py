@@ -4,7 +4,9 @@ import time
 import pygame
 from player import Player
 from arrowVector import *
+from testenemy import *
 import pickle
+from random import randint
 
 s = socket.socket()
 
@@ -28,8 +30,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-
-
+REVIVE = pygame.USEREVENT + 1
+CLEAR = pygame.USEREVENT + 2
 
 arrows = []
 
@@ -53,6 +55,7 @@ def game(connect, playerID):
     }
     last_direction_key = None
     running = True
+    score = 0
     while running:
         try:
             move = connect.recv(1024)
@@ -69,12 +72,38 @@ def game(connect, playerID):
             changeX = split[1]
             if split[2] == "True":
                 arrows.append(Arrow(thisPlayer.hitBox.x, thisPlayer.hitBox.y, int(split[3]), int(split[4])))
-                
+
+        if pygame.time.get_ticks() % 50 == 0 and thisPlayer.alive:
+            test = TestEnemy(player, randint(0, 600), randint(0, 300))
+            test_enemy_initialized = True
+            attackers.append(test)
+            
+        for arrow in arrows[:]:
+            colide = arrow.arrow.collideobjects(attackers, key=lambda x: x.rect)
+            if colide !=None:
+            
+                colide.trigger_explosion()
+                arrows.remove(arrow)
+                attackers.remove(colide)
+                score += 1
+                print("Score:", score)
 
         colide = thisPlayer.hitBox.collidelist([a.rect for a in attackers])
         if colide != -1 and thisPlayer.alive:
             print("Player hit!")
-            player.die()
+            thisPlayer.die()
+            pygame.time.set_timer(REVIVE, 5000)
+            for a in attackers:
+                a.trigger_explosion()
+            attackers.clear()
+        
+        
+
+        for event in pygame.event.get():
+            if event.type == REVIVE:
+                thisPlayer.alive = True
+
+                
         
         # Player movement
         if changeX == "left":
@@ -93,9 +122,11 @@ def game(connect, playerID):
                 arrows.remove(arrow)
             else:
                 arrowLoc.append(arrow.get_position())
-
+        enemyLoc = []
+        for a in attackers:
+            enemyLoc.append(a.get_position())
         player[playerID] = thisPlayer.getState()
-        connect.send(pickle.dumps((player, arrowLoc)))
+        connect.send(pickle.dumps((player, arrowLoc, enemyLoc)))
     
         time.sleep(0.001)
     del player[playerID]
