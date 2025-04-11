@@ -15,7 +15,7 @@ IP = '10.5.0.2'
 PORT = 5555
 
 s = socket.socket()
-HOST = socket.gethostname()
+HOST = 'adamstestserver.net'
 
 s.connect((HOST, PORT))
 
