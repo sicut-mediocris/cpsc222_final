@@ -16,7 +16,7 @@ PORT = 5555
 
 s = socket.socket()
 HOST = 'adamstestserver.net'
-
+#HOST = socket.gethostname()
 s.connect((HOST, PORT))
 
 message = "ping"

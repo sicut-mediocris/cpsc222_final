@@ -8,7 +8,7 @@ from testenemy import *
 import pickle
 from random import randint
 
-s = socket.socket()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 PORT = 5555
 HOST = socket.gethostname()
