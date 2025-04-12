@@ -26,10 +26,10 @@ def load_assets():
     arrow = pygame.image.load('assets/arrow.png').convert_alpha()
     arrow = pygame.transform.scale(arrow, (arrow.get_width(), arrow.get_height()))
 
-    #arrow_sound = pygame.mixer.Sound('assets/arrow_swish.mp3')
-    #impact_sound = pygame.mixer.Sound('assets/arrow_impact.mp3')
-    #arrow_sound.set_volume(0.3)
-    #impact_sound.set_volume(0.3)
+    arrow_sound = pygame.mixer.Sound('assets/arrow_swish.mp3')
+    impact_sound = pygame.mixer.Sound('assets/arrow_impact.mp3')
+    arrow_sound.set_volume(0.3)
+    impact_sound.set_volume(0.3)
 
     return {
         "background": background,
@@ -42,6 +42,6 @@ def load_assets():
         "enemy_frames": enemy_frames,
         "enemy_explosions": enemy_explosions,
         "arrow": arrow,
-        #"arrow_sound": arrow_sound,
-        #"impact_sound": impact_sound,
+        "arrow_sound": arrow_sound,
+        "impact_sound": impact_sound,
     }

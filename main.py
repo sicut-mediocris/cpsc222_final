@@ -105,7 +105,7 @@ async def main():
                     px, py = player.get_position()
                     arrow = Arrow(px + player.width // 2, py + player.height // 2, dx, dy, assets["arrow"])
                     arrows.append(arrow)
-                    #assets["arrow_sound"].play()
+                    assets["arrow_sound"].play()
                     player.is_shooting = True
                     player.shoot_frame_timer = 0
 
@@ -134,7 +134,7 @@ async def main():
                 attackers.remove(colide)
                 score += 1
                 print("Score:", score)
-                #pygame.time.set_timer(IMPACT_SOUND_EVENT, 360)
+                pygame.time.set_timer(IMPACT_SOUND_EVENT, 360)
         
         pygame.display.update()
         clock.tick(40)
