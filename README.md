@@ -4,17 +4,17 @@ This is a **multiplayer 2D shooter game** built using **Pygame** for the fronten
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🎮 Real-time multiplayer shooter gameplay  
-- 🌐 Hosted on AWS for global access  
-- 🔁 Client-server model using socket programming  
-- 📡 Concurrency handling for multiple players  
-- 🧱 Built with Python and Pygame
+-  Real-time multiplayer shooter gameplay  
+-  Hosted on AWS for global access  
+-  Client-server model using socket programming  
+-  Concurrency handling for multiple players  
+-  Built with Python and Pygame
 
 ---
 
-## 🧠 Tech Stack
+##  Tech Stack
 
 | Tech        | Purpose                        |
 |-------------|--------------------------------|
@@ -26,7 +26,7 @@ This is a **multiplayer 2D shooter game** built using **Pygame** for the fronten
 
 ---
 
-## 🛠️ How It Works
+##  How It Works
 
 1. **AWS Server (Host):**
    - An EC2 instance runs the game server.
@@ -44,7 +44,7 @@ This is a **multiplayer 2D shooter game** built using **Pygame** for the fronten
 
 ---
 
-## 🖥️ Running the Game
+## 🖥 Running the Game
 
 ### Server Setup (AWS):
 1. Launch an EC2 instance (Ubuntu recommended).
