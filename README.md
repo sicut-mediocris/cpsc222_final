@@ -1,4 +1,4 @@
-# 🕹️ Multiplayer Shooter Game (Concurrency Project)
+# 🕹 Multiplayer Shooter Game (Concurrency Project)
 
 This is a **multiplayer 2D shooter game** built using **Pygame** for the frontend and **AWS** as the hosting platform to manage client-server communication. It was created as a university project to demonstrate **concurrency principles** and **real-time multiplayer communication**.
 
