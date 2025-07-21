@@ -1,54 +1,50 @@
-# Multiplayer Shooter Game (Concurrency Project)
+A  Concurrency & Distributed Systems group project:
 
-This is a **multiplayer 2D shooter game** built using **Pygame** for the frontend and **AWS** as the hosting platform to manage client-server communication. It was created as a university project to demonstrate **concurrency principles** and **real-time multiplayer communication**.
+Welcome to our 2D multiplayer shooter game — built with Python, Pygame, and a whole lot of teamwork. What started as a simple single-player shooter turned into a fully interactive multiplayer experience, featuring enemies running on their own threads and real-time player communication through AWS-hosted sockets.
 
----
+We built this game not just to play — but to showcase core concepts of concurrency, threading, and distributed systems in action.
 
-##  Features
+ Key Highlights
+Multiplayer Support: Connect multiple players online using a client-server model
 
--  Real-time multiplayer shooter gameplay  
--  Hosted on AWS for global access  
--  Client-server model using socket programming  
--  Concurrency handling for multiple players  
--  Built with Python and Pygame
+Concurrency in Action: Each enemy moves independently on its own thread
 
----
+Real-Time Syncing: Game state updates flow seamlessly across clients
 
-##  Tech Stack
+Smooth Gameplay: Built with sprite animations, sound effects, and collision logic
 
-| Tech        | Purpose                        |
-|-------------|--------------------------------|
-| Python      | Core game and server logic     |
-| Pygame      | Game rendering and UI          |
-| AWS EC2     | Game server hosting            |
-| Socket Lib  | Client-server communication    |
-| Threading   | Concurrency & client handling  |
+Hosted on AWS: The server is live on the cloud, accessible from anywhere
 
----
+ Technologies Used
+Tech	Purpose
+Python	Game logic and networking
+Pygame	Game visuals, animations, and input
+Threading	Enemy concurrency & client handling
+Socket	Real-time multiplayer communication
+AWS EC2	Server deployment & hosting
 
-##  How It Works
+ How to Play
+ Controls
+Move: A (left), D (right)
 
-1. **AWS Server (Host):**
-   - An EC2 instance runs the game server.
-   - Listens for incoming player connections.
-   - Manages game state (player positions, bullets, hits).
+Shoot Arrows: Q, W, E (for different directions)
 
-2. **Clients (Players):**
-   - Launch Pygame-based game on their local machine.
-   - Connects to the AWS server using sockets.
-   - Sends/receives game data in real-time.
+ How to Run the Game
+ For Online Multiplayer:
+Go to the Client folder → then dist
 
-3. **Concurrency:**
-   - Each client connection is handled on a separate thread.
-   - Shared resources like game state are synchronized to prevent race conditions.
+Download main.exe
 
----
+Also download the assets folder and place it in the same folder as main.exe
 
-##  Running the Game
+Run main.exe and enjoy playing online!
 
-### Server Setup (AWS):
-1. Launch an EC2 instance (Ubuntu recommended).
-2. Install Python:
-   ```bash
-   sudo apt update
-   sudo apt install python3 python3-pip
+Make sure you're connected to the internet. The game communicates with the server hosted on AWS.
+
+🕹 For Offline Mode:
+If you want to play the local single-player version:
+
+Simply run the main.py file
+
+Everything works offline — enemies will still act independently using threads!
+
