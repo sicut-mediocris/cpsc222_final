@@ -9,14 +9,11 @@ import asyncio
 import socket
 import pickle
 
-from net import *
 
-IP = '10.5.0.2'
 PORT = 5555
 
 s = socket.socket()
-HOST = 'adamstestserver.net'
-#HOST = socket.gethostname()
+HOST = '3.18.102.234'  # Use the server's IP address
 s.connect((HOST, PORT))
 
 message = "ping"
@@ -139,7 +136,7 @@ async def main():
         pygame.display.update()
         clock.tick(40)
         await asyncio.sleep(0)
-        #await asyncio.wait([x.thread for x in attackers])
+       
 
     pygame.quit()
 
