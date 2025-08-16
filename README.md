@@ -1,74 +1,62 @@
-#  A Concurrency & Distributed Systems Group Project
+## A Concurrency & Distributed Systems Group Project (Offline Version)
 
-Welcome to our **2D multiplayer shooter game** — built with Python, Pygame, and a whole lot of teamwork.
+Welcome to our 2D single-player shooter game — built with Python, Pygame, and a whole lot of teamwork.
 
-What started as a simple single-player shooter turned into a fully interactive multiplayer experience, featuring:
-- Enemies running independently on their own threads
-- Real-time player communication via AWS-hosted sockets
+What began as a small project evolved into a fast-paced, threaded game engine where:
 
----
+Enemies run independently on their own threads
 
-##  Key Highlights
+Gameplay is smooth with real-time animations and collision logic
 
-- **Multiplayer Support:** Connect multiple players online using a client-server model  
-- **Concurrency in Action:** Each enemy moves independently on its own thread  
-- **Real-Time Syncing:** Game state updates flow seamlessly across clients  
-- **Smooth Gameplay:** Built with sprite animations, sound effects, and collision logic  
-- **Hosted on AWS:** The server is live on the cloud, accessible from anywhere  
+## Key Highlights
 
----
+Offline Single-Player Mode: No internet connection required — everything runs locally
 
-##  Technologies Used
+Concurrency in Action: Each enemy moves independently on its own thread
 
-| Technology | Purpose                                 |
-|------------|------------------------------------------|
-| **Python** | Game logic and networking                |
-| **Pygame** | Game visuals, animations, and input      |
-| **Threading** | Enemy concurrency & client handling  |
-| **Socket** | Real-time multiplayer communication      |
-| **AWS EC2** | Server deployment & hosting             |
+Smooth Gameplay: Sprite animations, sound effects, and collision detection for a polished feel
 
----
+ 
+ ## Technologies Used
+
+Python : 	Game logic and core mechanics
+
+Pygame : 	Visuals, animations, and input handling
+
+Threading : Independent enemy movement and logic
 
 
-Here’s a quick overview of the main files and what each of them does:
+ ## File Overview
 
-- `main.py` – The heart of the game. Runs the offline version, manages the main loop, initializes the game window, and handles player input and rendering.
-- `arrowVector.py` – Handles directional logic for shooting arrows. Each arrow has its own direction and velocity.
-- `utils.py` – Contains helper functions like movement calculations, collision detection, and asset speed control.
-- `testenemy.py` – Controls how enemies behave. Each enemy is run in its own Python thread, allowing for independent movement and animations.
-- `Client/` – Contains the files for the multiplayer version of the game.
-  - Inside `Client/dist/`, you'll find the `main.exe` (Windows executable for online play).
-- `assets/` – This folder includes all the game’s visual and audio assets: sprites, backgrounds, arrow icons, explosion animations, etc.
+main.py – Heart of the game. Runs the main loop, initializes the game window, and handles player input/rendering.
 
-##  How to Play
+arrowVector.py – Directional logic for shooting arrows, each with unique velocity and direction.
 
-- **Move:** `A` (left), `D` (right)  
-- **Shoot Arrows:** `Q`, `W`, `E` (different directions)
+utils.py – Helper functions for movement, collision detection, and speed control.
 
----
+testenemy.py – Controls enemy behavior; each enemy runs in its own Python thread.
 
-##  How to Run the Game (Online Multiplayer)
+assets/ – All visual/audio assets: sprites, backgrounds, arrow icons, explosion animations, etc.
 
-1. Navigate to the `Client` folder → then open the `dist` folder  
-2. Download `main.exe`  
-3. Also download the `assets` folder and place it **in the same directory as `main.exe`**  
-4. Run `main.exe`  
+## Controls
 
-> Make sure you're connected to the internet — the game connects to our AWS-hosted server
+Move: A (left), D (right)
 
----
+Shoot Arrows: Q, W, E (different directions)
 
-##  How to Run the Game (Offline Mode)
 
-If you prefer to play the local single-player version:
+## How to Run the Game
 
-1. Open the project folder  
-2. Run `main.py`  
 
-> The game works fully offline, with enemies still running independently through Python threads!
+ Run the .exe file called "archeroffline"
 
----
+For an easy setup without Python:
 
-Enjoy the game!  
-Let us know what you think, or feel free to explore the code and see how concurrency and networking come together!
+**Go to the Releases section on the repository.**
+
+Download the .exe file and also download the assets folder and keep them in the same folder
+
+Double-click the .exe file to play.
+
+Enjoy the game!
+Feel free to explore the code and see how Python threading makes enemy AI independent and dynamic.
