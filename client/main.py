@@ -108,7 +108,7 @@ async def main():
                 if event.key in direction_map:
                     vec = direction_map[event.key]
                     shoot = True
-                    #assets["arrow_sound"].play()
+                    
                    
 
             if event.type == pygame.KEYUP:

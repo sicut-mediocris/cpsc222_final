@@ -1,5 +1,4 @@
 import pygame
-#import threading
 import time
 import asyncio
 class TestEnemy:
@@ -22,17 +21,13 @@ class TestEnemy:
         self.frame_timer = 0
         self.animation_speed = 5  # controls how fast enemy animates
 
-        #self.thread = asyncio.create_task(self.move())
-        #self.thread.start()
+        
 
     def draw(self, screen, position):
         
         frame = pygame.transform.scale(self.enemy_frames[0], (40, 40))
         screen.blit(frame, position)
-        # self.frame_timer += 1
-        # if self.frame_timer >= self.animation_speed:
-        #     self.frame_timer = 0
-        #     self.frame_index = (self.frame_index + 1) % len(self.enemy_frames)
+        
 
     async def move(self):
         while self.alive:
@@ -43,7 +38,7 @@ class TestEnemy:
             self.rect.move_ip(direction * self.speed)
             await asyncio.sleep(0)
         
-        #self.thread.cancel()
+       
 
     def trigger_explosion(self):
         self.alive = False
