@@ -139,7 +139,7 @@ async def main():
         pygame.display.update()
         clock.tick(40)
         await asyncio.sleep(0)
-        #await asyncio.wait([x.thread for x in attackers])
+        
 
     pygame.quit()
 

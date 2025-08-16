@@ -1,5 +1,4 @@
 import pygame
-#import threading
 import time
 import asyncio
 class TestEnemy:
@@ -16,14 +15,14 @@ class TestEnemy:
         self.exploding = False
         self.explosion_index = 0
         self.explosion_timer = 0
-        self.explosion_delay = 4  # controls how slow explosion animates
+        self.explosion_delay = 4 
 
         self.frame_index = 0
         self.frame_timer = 0
-        self.animation_speed = 5  # controls how fast enemy animates
+        self.animation_speed = 5 
 
         self.thread = asyncio.create_task(self.move())
-        #self.thread.start()
+        
 
     def draw(self, screen):
         if self.exploding:
@@ -51,7 +50,7 @@ class TestEnemy:
             self.rect.move_ip(direction * self.speed)
             await asyncio.sleep(0)
         
-        #self.thread.cancel()
+     
 
     def trigger_explosion(self):
         self.alive = False
