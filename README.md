@@ -1,74 +1,104 @@
-#  A Concurrency & Distributed Systems Group Project
+## A Concurrency & Distributed Systems Group Project (Online Multiplayer Version)
 
-Welcome to our **2D multiplayer shooter game** — built with Python, Pygame, and a whole lot of teamwork.
+Welcome to our 2D online multiplayer shooter game — built with Python, Pygame, AWS-hosted sockets, and a whole lot of engineering magic.
 
-What started as a simple single-player shooter turned into a fully interactive multiplayer experience, featuring:
-- Enemies running independently on their own threads
-- Real-time player communication via AWS-hosted sockets
+What started as a small offline shooter evolved into a fully cloud-powered, real-time multiplayer experience where:
 
----
+Players connect from anywhere in the world
 
-##  Key Highlights
+Enemies run on independent threads for dynamic gameplay
 
-- **Multiplayer Support:** Connect multiple players online using a client-server model  
-- **Concurrency in Action:** Each enemy moves independently on its own thread  
-- **Real-Time Syncing:** Game state updates flow seamlessly across clients  
-- **Smooth Gameplay:** Built with sprite animations, sound effects, and collision logic  
-- **Hosted on AWS:** The server is live on the cloud, accessible from anywhere  
-
----
-
-##  Technologies Used
-
-| Technology | Purpose                                 |
-|------------|------------------------------------------|
-| **Python** | Game logic and networking                |
-| **Pygame** | Game visuals, animations, and input      |
-| **Threading** | Enemy concurrency & client handling  |
-| **Socket** | Real-time multiplayer communication      |
-| **AWS EC2** | Server deployment & hosting             |
+A dedicated AWS EC2 server keeps the action alive in real-time
 
 ---
 
 
-Here’s a quick overview of the main files and what each of them does:
+ ## Key Highlights
 
-- `main.py` – The heart of the game. Runs the offline version, manages the main loop, initializes the game window, and handles player input and rendering.
-- `arrowVector.py` – Handles directional logic for shooting arrows. Each arrow has its own direction and velocity.
-- `utils.py` – Contains helper functions like movement calculations, collision detection, and asset speed control.
-- `testenemy.py` – Controls how enemies behave. Each enemy is run in its own Python thread, allowing for independent movement and animations.
-- `Client/` – Contains the files for the multiplayer version of the game.
-  - Inside `Client/dist/`, you'll find the `main.exe` (Windows executable for online play).
-- `assets/` – This folder includes all the game’s visual and audio assets: sprites, backgrounds, arrow icons, explosion animations, etc.
+True Multiplayer Support: Players connect over the internet using a custom client–server model
 
-##  How to Play
+Concurrency Everywhere: Each enemy runs independently in its own Python thread, while multiple players update simultaneously
 
-- **Move:** `A` (left), `D` (right)  
-- **Shoot Arrows:** `Q`, `W`, `E` (different directions)
+Real-Time Syncing: Game state updates flow seamlessly between clients through socket communication
 
----
+Always-Available Server: Hosted on AWS EC2 — accessible 24/7 while the instance is running
 
-##  How to Run the Game (Online Multiplayer)
+Cloud Deployment Skills: Configured, deployed, and managed a Python multiplayer game server using AWS free tier resources
 
-1. Navigate to the `Client` folder → then open the `dist` folder  
-2. Download `main.exe`  
-3. Also download the `assets` folder and place it **in the same directory as `main.exe`**  
-4. Run `main.exe`  
+## Technologies & Cloud Infrastructure
 
-> Make sure you're connected to the internet — the game connects to our AWS-hosted server
+Python : Game logic and networking
 
----
+Pygame	: Game visuals, animations, and input
 
-##  How to Run the Game (Offline Mode)
+Threading	: Enemy concurrency & client handling
 
-If you prefer to play the local single-player version:
+Socket	: Real-time multiplayer communication
 
-1. Open the project folder  
-2. Run `main.py`  
+AWS : EC2	Server hosting & deployment
 
-> The game works fully offline, with enemies still running independently through Python threads!
+Linux (Ubuntu): 	Server environment for server.py
+
+Cloud Networking: 	Configured open ports & inbound rules for multiplayer connectivity
 
 ---
 
-Enjoy the game!  
-Let us know what you think, or feel free to explore the code and see how concurrency and networking come together!
+##  Cloud Deployment Process
+
+The game’s backend (server.py) runs on an AWS EC2 instance. I configured the instance to:
+
+Host Python code for the multiplayer server.
+
+Keep the socket connection open for all players.
+
+Manage inbound rules to allow real-time communication.
+
+Run on Ubuntu, with Python environment setup and dependencies installed.
+
+Since we are  using AWS Free Tier, the server runs for limited days per month — but while it’s active, it’s online 24/7.
+
+If you want to play when the free tier time is used up, just contact me on LinkedIn and I can spin the server back up for you.
+
+## File Overview
+
+server.py – The multiplayer backend, running on AWS EC2 to handle player connections and game state syncing.
+
+main.py – The game client for local play and multiplayer mode.
+
+arrowVector.py – Directional logic for shooting arrows.
+
+utils.py – Helper functions for movement, collision detection, and speed control.
+
+testenemy.py – Enemy AI, each enemy running in its own thread.
+
+Client/ – Contains the multiplayer client build.
+
+Web/ - Contains files which interact with the AWS
+
+assets/ – Visual/audio assets: sprites, backgrounds, arrow icons, explosion animations, etc.
+
+---
+
+## Controls
+
+Move: A (left), D (right)
+
+Shoot Arrows: Q, W, E (different directions)
+
+---
+
+## How to Play (Online Multiplayer)
+
+Just go to the release version archeronline. Download the .exe file and then also download the assets folder,keep the assets folder and the .exe file in the same folder and then just run the .exe file. 
+
+---
+
+## Note on Server Availability
+
+The AWS server runs on the free tier and has limited uptime per month.
+If the server is not currently online, send me a message on LinkedIn(www.linkedin.com/in/sukirat-singh-dhillon-275054321) and I’ll bring it back up for you.
+
+While it’s running, the experience is real-time, global, and powered entirely by Python + AWS cloud infrastructure.
+
+Enjoy the game!
+And if you’re curious about the backend magic, check out server.py to see how threads, sockets, and cloud hosting come together to keep multiplayer alive.
