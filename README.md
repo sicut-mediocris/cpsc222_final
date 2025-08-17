@@ -1,12 +1,12 @@
 ## A Concurrency & Distributed Systems Group Project (Offline Version)
 
-Welcome to our 2D single-player shooter game — built with Python, Pygame, and a whole lot of teamwork.
+Welcome to our 2D single-player shooter game — built with Python and  Pygame
 
 What began as a small project evolved into a fast-paced, threaded game engine where:
 
 Enemies run independently on their own threads
 
-Gameplay is smooth with real-time animations and collision logic
+Gameplay is smooth with real-time animations and collision logic. This branch gives you smooth animations whereas in the online branch there was a problem getting the sprite animations and sound to work.
 
 ## Key Highlights
 
