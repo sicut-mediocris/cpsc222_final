@@ -51,13 +51,20 @@ Shoot Arrows: Q, W, E (different directions)
 **Go to the Releases section on the repository.**
 
 
- Run the .exe file called "archeroffline"
+<img width="1020" height="573" alt="imp-ss" src="https://github.com/user-attachments/assets/b306fa34-602d-46d2-86e7-8c4a79948905" />
+
+
+
+
+ Run the .exe file called "archeroffline" which is version V1.0
 
 
 
 Download the .exe file and also download the assets folder and keep them in the same folder
 
+
 Double-click the .exe file to play.
 
 Enjoy the game!
 Feel free to explore the code and see how Python threading makes enemy AI independent and dynamic.
+
