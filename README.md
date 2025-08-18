@@ -2,7 +2,7 @@
 
 Welcome to our 2D online multiplayer shooter game — built with Python, Pygame, AWS-hosted sockets, and a whole lot of engineering magic.
 
-What started as a small offline shooter evolved into a fully cloud-powered, real-time multiplayer experience where:
+ This is  a small offline shooter evolved into a fully cloud-powered, real-time multiplayer experience where:
 
 Players connect from anywhere in the world
 
