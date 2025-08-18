@@ -48,11 +48,12 @@ Shoot Arrows: Q, W, E (different directions)
 ## How to Run the Game
 
 
+**Go to the Releases section on the repository.**
+
+
  Run the .exe file called "archeroffline"
 
-For an easy setup without Python:
 
-**Go to the Releases section on the repository.**
 
 Download the .exe file and also download the assets folder and keep them in the same folder
 
