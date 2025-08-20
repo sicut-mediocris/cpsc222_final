@@ -89,7 +89,7 @@ Shoot Arrows: Q, W, E (different directions)
 
 ## How to Play (Online Multiplayer)
 
-Just go to the release version archeronline. Download the .exe file and then also download the assets folder,keep the assets folder and the .exe file in the same folder and then just run the .exe file. 
+Just go to the release version archeronline(Version V1.1). Download the .exe file and then also download the assets folder,keep the assets folder and the .exe file in the same folder and then just run the .exe file. 
 
 ---
 
