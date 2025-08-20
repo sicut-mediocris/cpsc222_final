@@ -10,6 +10,8 @@ Enemies run on independent threads for dynamic gameplay
 
 A dedicated AWS EC2 server keeps the action alive in real-time
 
+There is a trade-off as we were nto able to figure out how to get our sprite animations through and our sound effects were also not working,we are currently in the process of resolving the issue
+
 ---
 
 
