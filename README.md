@@ -60,7 +60,7 @@ Shoot Arrows: Q, W, E (different directions)
 
 
 
-Download the .exe file and also download the assets folder and keep them in the same folder
+**Download the .exe file and also download the assets folder and keep them in the same folder**
 
 
 Double-click the .exe file to play.
